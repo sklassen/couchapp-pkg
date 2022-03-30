@@ -1,0 +1,23 @@
+name: couchapp
+version: 1.0.2
+summary: Standalone CouchDB application utility
+description: |
+      Snap packaged version of https://github.com/couchapp/couchapp.
+      See github for details.
+grade: stable
+confinement: devmode
+base: core18
+architectures:
+  - build-on: [amd64]
+
+apps:
+  couchapp:
+    command: bin/couchapp
+    plugs: [home, network, network-bind]
+
+parts:
+  couchapp:
+    plugin: python
+    python-version: python2
+    stage-packages: [libreadline6]
+    source: https://github.com/couchapp/couchapp.git
